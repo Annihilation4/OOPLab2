@@ -1,0 +1,24 @@
+Laptop 101 1350.89 25 Electronics Dell 5 0
+Example Product 1 85 13 Category A Brand A 5 1
+Laptop 101 1350.89 25 Electronics Dell 5 0
+Example Product 1 85 13 Category A Brand A 5 1
+Laptop 101 1350.89 25 Electronics Dell 5 0
+Example Product 1 85 13 Category A Brand A 5 1
+Laptop 101 1350.89 25 Electronics Dell 5 0
+Example Product 1 85 13 Category A Brand A 5 1
+Laptop 101 1350.89 25 Electronics Dell 5 0
+Example Product 1 85 13 Category A Brand A 5 1
+Laptop 101 1350.89 25 Electronics Dell 5 0
+Example Product 1 85 13 Category A Brand A 5 1
+Laptop 101 1350.89 25 Electronics Dell 5 0
+Example Product 1 85 13 Category A Brand A 5 1
+Laptop 101 1350.89 25 Electronics Dell 5 0
+Example Product 1 85 13 Category A Brand A 5 1
+Laptop 101 1350.89 25 Electronics Dell 5 0
+Example Product 1 85 13 Category A Brand A 5 1
+Laptop 101 1350.89 25 Electronics Dell 5 0
+Example Product 1 85 13 Category A Brand A 5 1
+Laptop 101 1350.89 25 Electronics Dell 5 0
+Tablet 103 254.992 18 Electronics Samsung 4 1
+Laptop 101 1350.89 25 Electronics Dell 5 0
+Tablet 103 254.992 18 Electronics Samsung 4 1
