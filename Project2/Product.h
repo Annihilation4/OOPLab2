@@ -44,10 +44,7 @@ public:
         std::cout << "Product destroyed: " << name << std::endl;
     }
 
-    // Статичний метод для отримання кількості продуктів
-    static int getProductCount() {
-        return productCount;
-    }
+
 
     //гет,сет
     void setName(std::string n) { name = n; }
@@ -73,91 +70,7 @@ public:
 
     void setAvailability(bool a) { availability = a; }
     bool isAvailable() const { return availability; }
-
-    // Метод для виведення інформації про продукт
-    void display() const {
-        std::cout << "Name: " << name
-            << ", ID: " << productID
-            << ", Price: " << price
-            << ", Quantity: " << quantity
-            << ", Category: " << category
-            << ", Brand: " << brand
-            << ", Rating: " << rating
-            << ", Availability: " << (availability ? "In stock" : "Out of stock") << std::endl;
-    }
-
-    //перевантажений метод для поповнення запасу
-    void restock(int amount) {
-        quantity += amount;
-        std::cout << "Restocked " << amount << " items." << std::endl;
-    }
-
-    //перевантажений метод з оновленням доступності
-    void restock(int amount, bool newAvailability) {
-        quantity += amount;
-        availability = newAvailability;
-        std::cout << "Restocked " << amount << " items. Availability updated." << std::endl;
-    }
-
-    //метод для збереження даних у файл
-    void saveToFile(const std::string& filename) const {
-        std::ofstream file(filename, std::ios::app);
-        if (file.is_open()) {
-            file << name << " " << productID << " " << price << " " << quantity << " " << category << " "
-                << brand << " " << rating << " " << availability << std::endl;
-            file.close();
-        }
-    }
-
-    //метод для завантаження даних з файлу
-    void loadFromFile(const std::string& filename) {
-        std::ifstream file(filename);
-        if (file.is_open()) {
-            file >> name >> productID >> price >> quantity >> category >> brand >> rating >> availability;
-            file.close();
-        }
-    }
-    //перевантажений метод для порівняння двох продуктів за ціною (приймає об'єкт класу)
-    bool isMoreExpensiveThan(const Product& other) const {
-        return this->price > other.price;
-    }
-
-    //метод для порівняння продуктів по кількості
-    bool isMoreExpensiveThan(const Product& other, double discount) const {
-        double discountedPrice = this->price - (this->price * discount / 100);
-        return discountedPrice > other.price;
-    }
-
-    //перевантажений метод, який повертає об'єкт класу Product
-public:
-    Product createDiscountedProduct(double discountPercent) const {
-        double discountedPrice = price - (price * discountPercent / 100);
-        return Product(name, productID, discountedPrice, quantity, category, brand, rating, availability);
-    }
-
-    //перевантажений метод, який повертає об'єкт класу з оновленою кількістю
-    Product createDiscountedProduct(double discountPercent, int additionalQuantity) const {
-        double discountedPrice = price - (price * discountPercent / 100);
-        return Product(name, productID, discountedPrice, quantity + additionalQuantity, category, brand, rating, availability);
-    }
-
-    //додатковий метод для виділення пам'яті та сортування чисел
-    void dynamicMemoryAllocation(int size) {
-        int* arr = new int[size];
-        for (int i = 0; i < size; ++i) {
-            arr[i] = rand() % 100;
-        }
-
-        //сортування
-        std::sort(arr, arr + size);
-        std::cout << "Sorted values: ";
-        for (int i = 0; i < size; ++i) {
-            std::cout << arr[i] << " ";
-        }
-        std::cout << std::endl;
-
-        delete[] arr;
-    }
+    
 };
 
 #endif

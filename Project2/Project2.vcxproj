@@ -120,21 +120,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Administrator.cpp" />
     <ClCompile Include="Cart.cpp" />
+    <ClCompile Include="CartOrder.cpp" />
     <ClCompile Include="Client.cpp" />
+    <ClCompile Include="ClientOrder.cpp" />
+    <ClCompile Include="DiscountedCart.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="Order.cpp" />
+    <ClCompile Include="OrderHistory.cpp" />
+    <ClCompile Include="Payment.cpp" />
+    <ClCompile Include="PaymentMethod.cpp" />
     <ClCompile Include="Product.cpp" />
+    <ClCompile Include="Sale.cpp" />
     <ClCompile Include="Warehouse.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Administrator.h" />
     <ClInclude Include="Cart.h" />
+    <ClInclude Include="CartOrder.h" />
     <ClInclude Include="Client.h" />
+    <ClInclude Include="ClientOrder.h" />
+    <ClInclude Include="DiscountedCart.h" />
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Order.h" />
+    <ClInclude Include="OrderHistory.h" />
+    <ClInclude Include="Payment.h" />
+    <ClInclude Include="PaymentMethod.h" />
     <ClInclude Include="Product.h" />
+    <ClInclude Include="Sale.h" />
     <ClInclude Include="Warehouse.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -7,21 +7,16 @@
 
 class Warehouse {
 private:
+    int warehouseID;
+    std::string location;
+    std::string managerName;
+    int capacity;
+    int currentStock;
+    int incomingStock;
+    int outgoingStock;
     std::vector<Product> products; // Вектор продуктів на складі
 
 public:
-    // Метод для додавання продукту на склад
-    void addProduct(const Product& product) {
-        products.push_back(product);
-    }
-
-    // Метод для відображення всіх продуктів на складі
-    void displayProducts() const {
-        std::cout << "Products in Warehouse:" << std::endl;
-        for (const auto& product : products) {
-            std::cout << "- " << product.getName() << " (ID: " << product.getProductID() << ")" << std::endl;
-        }
-    }
 };
 
 #endif
