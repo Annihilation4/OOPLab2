@@ -126,11 +126,13 @@
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="ClientOrder.cpp" />
     <ClCompile Include="DiscountedCart.cpp" />
+    <ClCompile Include="Guest.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="Order.cpp" />
     <ClCompile Include="OrderHistory.cpp" />
     <ClCompile Include="Payment.cpp" />
     <ClCompile Include="PaymentMethod.cpp" />
+    <ClCompile Include="Person.cpp" />
     <ClCompile Include="Product.cpp" />
     <ClCompile Include="Sale.cpp" />
     <ClCompile Include="Warehouse.cpp" />
@@ -142,6 +144,7 @@
     <ClInclude Include="Client.h" />
     <ClInclude Include="ClientOrder.h" />
     <ClInclude Include="DiscountedCart.h" />
+    <ClInclude Include="Guest.h" />
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -149,9 +152,14 @@
     <ClInclude Include="OrderHistory.h" />
     <ClInclude Include="Payment.h" />
     <ClInclude Include="PaymentMethod.h" />
+    <ClInclude Include="Person.h" />
     <ClInclude Include="Product.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="Sale.h" />
     <ClInclude Include="Warehouse.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Project2.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

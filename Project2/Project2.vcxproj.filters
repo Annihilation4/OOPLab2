@@ -57,6 +57,12 @@
     <ClCompile Include="OrderHistory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Person.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Guest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyForm.h">
@@ -101,5 +107,19 @@
     <ClInclude Include="OrderHistory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Person.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Guest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Project2.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>
