@@ -46,8 +46,22 @@ public:
     void setMaxLimit(int maxLimit) { this->maxLimit = maxLimit; }
     void setProvider(const std::string& provider) { this->provider = provider; }
     void setDiscountRate(float discountRate) { this->discountRate = discountRate; }
+
+    // Статичні константні методи оплати
+    static PaymentMethod CARD() {
+        return PaymentMethod(1, "Card Payment", 1.5f, true, "USD", 10000, "Visa", 0.05f);
+    }
+
+    static PaymentMethod CASH() {
+        return PaymentMethod(2, "Cash Payment", 0.0f, false, "USD", 5000, "Cash", 0.0f);
+    }
+
+    static PaymentMethod E_WALLET() {
+        return PaymentMethod(3, "E-Wallet", 2.0f, true, "USD", 15000, "PayPal", 0.02f);
+    }
 };
 
 #endif
+
 
 

@@ -69,6 +69,36 @@ public:
 
     void setOrderStatus(std::string status) { orderStatus = status; }
     std::string getOrderStatus() const { return orderStatus; }
+    //2)
+    // Перевантаження оператора +
+    Order operator+(const Order& other) const {
+        if (product.getProductID() != other.product.getProductID()) {
+            throw std::invalid_argument("Cannot combine orders with different products!");
+        }
+        return Order(orderID, product, quantity + other.quantity, paymentMethod, isPaid,
+            deliveryAddress, orderStatus);
+    }
+
+    // Перевантаження оператора -
+    Order operator-(const Order& other) const {
+        if (product.getProductID() != other.product.getProductID()) {
+            throw std::invalid_argument("Cannot subtract orders with different products!");
+        }
+        int newQuantity = quantity - other.quantity;
+        if (newQuantity < 0) newQuantity = 0;  // Уникнення негативної кількості
+        return Order(orderID, product, newQuantity, paymentMethod, isPaid,
+            deliveryAddress, orderStatus);
+    }
+
+    // Метод для відображення інформації про замовлення
+    void display() const {
+        std::cout << "Order ID: " << orderID
+            << ", Product: " << product.getName()
+            << ", Quantity: " << quantity
+            << ", Total Price: " << totalPrice
+            << ", Address: " << deliveryAddress
+            << ", Status: " << orderStatus << '\n';
+    }
 
 };
 #endif

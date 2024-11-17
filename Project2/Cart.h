@@ -18,6 +18,9 @@ private:
     std::vector<Product> products; // Вектор для зберігання продуктів у кошику
 
 public:
+    // Дефолтний конструктор
+    Cart()
+        : cartID(0), totalAmount(0.0), itemCount(0), discount(0.0), status("Active"), creationDate("") {}
     // Конструктор базового класу
     Cart(int cartID, const Client& client, float totalAmount = 0.0, float discount = 0.0, const std::string& status = "Active", const std::string& creationDate = "")
         : cartID(cartID), client(client), totalAmount(totalAmount), discount(discount), status(status), creationDate(creationDate) {}
@@ -71,9 +74,61 @@ public:
             std::cout << "- " << product.getName() << " (Quantity: " << product.getQuantity() << ", Price: " << product.getPrice() << ")" << std::endl;
         }
     }
+    //3)
+    // Оператор [] для доступу до елемента за індексом
+    Product& operator[](size_t index) {
+        if (index >= products.size()) throw std::out_of_range("Invalid index");
+        return products[index];
+    }
+
+    // Оператор += для додавання товару
+    Cart& operator+=(const Product& product) {
+        products.push_back(product);
+        return *this;
+    }
+
+    // Оператор -= для видалення товару за індексом
+    Cart& operator-=(size_t index) {
+        if (index >= products.size()) throw std::out_of_range("Invalid index");
+        products.erase(products.begin() + index);
+        return *this;
+    }
+
+    // Оператор *= для масового знижування цін
+    Cart& operator*=(double discount) {
+        for (auto& product : products) {
+            product.setPrice(product.getPrice() * discount);
+        }
+        return *this;
+    }
+
+    // Оператор = для копіювання кошика
+    Cart& operator=(const Cart& other) {
+        if (this != &other) {
+            cartID = other.cartID;
+            client = other.client;
+            totalAmount = other.totalAmount;
+            itemCount = other.itemCount;
+            discount = other.discount;
+            status = other.status;
+            creationDate = other.creationDate;
+            products = other.products;
+        }
+        return *this;
+    }
+    // Оператор * для обчислення загальної вартості кошика
+    float operator*(const Cart& cart) {
+        float totalCost = 0.0;
+        for (const auto& product : cart.products) {
+            totalCost += product.getPrice() * product.getQuantity(); // Ціна * Кількість
+        }
+        return totalCost;
+    }
+
 };
 
 #endif
+
 
 
 

@@ -70,6 +70,39 @@ public:
 
     void setAvailability(bool a) { availability = a; }
     bool isAvailable() const { return availability; }
+    //1)
+    // Префіксна форма оператора ++
+    Product& operator++() {
+        ++quantity;  // Збільшення кількості
+        return *this;
+    }
+
+    // Постфіксна форма оператора ++
+    Product operator++(int) {
+        Product temp = *this;  // Збереження поточного стану
+        ++(*this);             // Виклик префіксного оператора
+        return temp;           // Повернення початкового стану
+    }
+
+    // Префіксна форма оператора --
+    Product& operator--() {
+        if (quantity > 0) --quantity;  // Зменшення кількості
+        return *this;
+    }
+
+    // Постфіксна форма оператора --
+    Product operator--(int) {
+        Product temp = *this;  // Збереження поточного стану
+        --(*this);             // Виклик префіксного оператора
+        return temp;           // Повернення початкового стану
+    }
+
+    // Метод для відображення інформації про товар
+    void display() const {
+        std::cout << "Product: " << name << ", Quantity: " << quantity
+            << ", Price: " << price << ", Rating: " << rating
+            << ", Available: " << (availability ? "Yes" : "No") << '\n';
+    }
     
 };
 

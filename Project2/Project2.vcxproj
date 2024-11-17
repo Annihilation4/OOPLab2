@@ -125,6 +125,7 @@
     <ClCompile Include="CartOrder.cpp" />
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="ClientOrder.cpp" />
+    <ClCompile Include="Comparison.cpp" />
     <ClCompile Include="DiscountedCart.cpp" />
     <ClCompile Include="Guest.cpp" />
     <ClCompile Include="MyForm.cpp" />
@@ -135,6 +136,7 @@
     <ClCompile Include="Person.cpp" />
     <ClCompile Include="Product.cpp" />
     <ClCompile Include="Sale.cpp" />
+    <ClCompile Include="Statistics.cpp" />
     <ClCompile Include="Warehouse.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -143,6 +145,7 @@
     <ClInclude Include="CartOrder.h" />
     <ClInclude Include="Client.h" />
     <ClInclude Include="ClientOrder.h" />
+    <ClInclude Include="Comparison.h" />
     <ClInclude Include="DiscountedCart.h" />
     <ClInclude Include="Guest.h" />
     <ClInclude Include="MyForm.h">
@@ -156,6 +159,7 @@
     <ClInclude Include="Product.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Sale.h" />
+    <ClInclude Include="Statistics.h" />
     <ClInclude Include="Warehouse.h" />
   </ItemGroup>
   <ItemGroup>
