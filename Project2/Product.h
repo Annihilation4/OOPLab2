@@ -21,6 +21,9 @@ private:
     static int productCount; // Статичне поле для підрахунку кількості продуктів
 
 public:
+    Product(std::string name, int id, double price) : name(name), productID(id), price(price) {}
+
+    Product(std::string name, int id) : name(name), productID(id) {}
     // конструктор без параметрів
     Product()
         : name(""), productID(0), price(0.0), quantity(0),
@@ -41,10 +44,8 @@ public:
 
     // Деструктор
     ~Product() {
-        std::cout << "Product destroyed: " << name << std::endl;
+        /*std::cout << "Product destroyed: " << name << std::endl;*/
     }
-
-
 
     //гет,сет
     void setName(std::string n) { name = n; }
@@ -70,40 +71,176 @@ public:
 
     void setAvailability(bool a) { availability = a; }
     bool isAvailable() const { return availability; }
-    //1)
-    // Префіксна форма оператора ++
-    Product& operator++() {
-        ++quantity;  // Збільшення кількості
-        return *this;
-    }
-
-    // Постфіксна форма оператора ++
-    Product operator++(int) {
-        Product temp = *this;  // Збереження поточного стану
-        ++(*this);             // Виклик префіксного оператора
-        return temp;           // Повернення початкового стану
-    }
-
-    // Префіксна форма оператора --
-    Product& operator--() {
-        if (quantity > 0) --quantity;  // Зменшення кількості
-        return *this;
-    }
-
-    // Постфіксна форма оператора --
-    Product operator--(int) {
-        Product temp = *this;  // Збереження поточного стану
-        --(*this);             // Виклик префіксного оператора
-        return temp;           // Повернення початкового стану
-    }
-
-    // Метод для відображення інформації про товар
-    void display() const {
-        std::cout << "Product: " << name << ", Quantity: " << quantity
-            << ", Price: " << price << ", Rating: " << rating
-            << ", Available: " << (availability ? "Yes" : "No") << '\n';
-    }
     
+    bool operator<(const Product& other) const {
+        return productID < other.productID;  // Порівняння за ID
+    }
+    void display() const {
+        std::cout << "Product: " << name << ", Price: " << price << std::endl;
+    }
+    //3)
+    // Алгоритм 1: Сортування продуктів за ціною
+    static void sortByPrice(std::vector<Product>& products) {
+        std::sort(products.begin(), products.end(), compareByPrice);
+    }
+
+    static bool compareByPrice(const Product& a, const Product& b) {
+        return a.getPrice() < b.getPrice();
+    }
+
+    // Алгоритм 2: Пошук продукту за ID
+    static Product* findProductByID(std::vector<Product>& products, int id) {
+        for (size_t i = 0; i < products.size(); i++) {
+            if (products[i].getProductID() == id) {
+                return &products[i];
+            }
+        }
+        return nullptr;
+    }
+
+    // Алгоритм 3: Фільтрація продуктів за категорією
+    static std::vector<Product> filterByCategory(const std::vector<Product>& products, const std::string& category) {
+        std::vector<Product> filteredProducts;
+        for (size_t i = 0; i < products.size(); i++) {
+            if (products[i].getCategory() == category) {
+                filteredProducts.push_back(products[i]);
+            }
+        }
+        return filteredProducts;
+    }
+
+    // Алгоритм 4: Оновлення кількості продукту
+    static bool updateProductQuantity(std::vector<Product>& products, int productID, int newQuantity) {
+        for (size_t i = 0; i < products.size(); i++) {
+            if (products[i].getProductID() == productID) {
+                products[i].setQuantity(newQuantity);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // Алгоритм 5: Підрахунок середньої ціни продуктів
+    static double calculateAveragePrice(const std::vector<Product>& products) {
+        double totalPrice = 0;
+        for (size_t i = 0; i < products.size(); i++) {
+            totalPrice += products[i].getPrice();
+        }
+        if (products.size() > 0) {
+            return totalPrice / products.size();
+        }
+        return 0;
+    }
+    //4)
+    //Функтори
+    class Plus {
+    public:
+        Product operator()(const Product& lhs, const Product& rhs) const {
+            return Product(lhs.name, lhs.productID, lhs.price + rhs.price, lhs.quantity + rhs.quantity, lhs.category, lhs.brand, lhs.rating, lhs.availability);
+        }
+    };
+
+    class Minus {
+    public:
+        Product operator()(const Product& lhs, const Product& rhs) const {
+            return Product(lhs.name, lhs.productID, lhs.price - rhs.price, lhs.quantity - rhs.quantity, lhs.category, lhs.brand, lhs.rating, lhs.availability);
+        }
+    };
+
+    class Times {
+    public:
+        Product operator()(const Product& lhs, int factor) const {
+            return Product(lhs.name, lhs.productID, lhs.price * factor, lhs.quantity * factor, lhs.category, lhs.brand, lhs.rating, lhs.availability);
+        }
+    };
+
+    class Divides {
+    public:
+        Product operator()(const Product& lhs, int divisor) const {
+            if (divisor == 0) {
+                throw std::invalid_argument("Division by zero!");
+            }
+            return Product(lhs.name, lhs.productID, lhs.price / divisor, lhs.quantity / divisor, lhs.category, lhs.brand, lhs.rating, lhs.availability);
+        }
+    };
+
+    class Modulus {
+    public:
+        Product operator()(const Product& lhs, int divisor) const {
+            if (divisor == 0) {
+                throw std::invalid_argument("Modulo by zero!");
+            }
+            return Product(lhs.name, lhs.productID, lhs.price, lhs.quantity % divisor, lhs.category, lhs.brand, lhs.rating, lhs.availability);
+        }
+    };
+
+    class Negate {
+    public:
+        Product operator()(const Product& lhs) const {
+            return Product(lhs.name, lhs.productID, -lhs.price, -lhs.quantity, lhs.category, lhs.brand, lhs.rating, lhs.availability);
+        }
+    };
+    class EqualTo {
+    public:
+        bool operator()(const Product& lhs, const Product& rhs) const {
+            return lhs.productID == rhs.productID;
+        }
+    };
+
+    class NotEqualTo {
+    public:
+        bool operator()(const Product& lhs, const Product& rhs) const {
+            return lhs.productID != rhs.productID;
+        }
+    };
+
+    class Greater {
+    public:
+        bool operator()(const Product& lhs, const Product& rhs) const {
+            return lhs.price > rhs.price;
+        }
+    };
+
+    class Less {
+    public:
+        bool operator()(const Product& lhs, const Product& rhs) const {
+            return lhs.price < rhs.price;
+        }
+    };
+
+    class GreaterEqual {
+    public:
+        bool operator()(const Product& lhs, const Product& rhs) const {
+            return lhs.price >= rhs.price;
+        }
+    };
+
+    class LessEqual {
+    public:
+        bool operator()(const Product& lhs, const Product& rhs) const {
+            return lhs.price <= rhs.price;
+        }
+    };
+    class LogicalAnd {
+    public:
+        bool operator()(const Product& lhs, const Product& rhs) const {
+            return lhs.availability && rhs.availability;
+        }
+    };
+
+    class LogicalOr {
+    public:
+        bool operator()(const Product& lhs, const Product& rhs) const {
+            return lhs.availability || rhs.availability;
+        }
+    };
+
+    class LogicalNot {
+    public:
+        bool operator()(const Product& lhs) const {
+            return !lhs.availability;
+        }
+    };
 };
 
 #endif

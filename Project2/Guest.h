@@ -15,12 +15,6 @@ public:
         // Додаткові ініціалізації, якщо потрібно
     }
 
-    void displayInfo() const override {
-        std::cout << "Guest Info\n";
-        std::cout << "Name: " << name << "\n"; // Виведення імені гостя
-    }
-
-    // Інші властивості та методи для гостей
 };
 
 #endif

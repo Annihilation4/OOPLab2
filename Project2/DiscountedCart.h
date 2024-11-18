@@ -21,22 +21,6 @@ public:
         discountPercentage(discountPercentage), discountCode(discountCode), expiryDate(expiryDate), isValidDiscount(true) {}
     ~DiscountedCart() {}
 
-    void applyDiscount() {
-        if (validateDiscount()) {
-            float totalCost = getTotalCost();
-            float discountedCost = totalCost - (totalCost * (discountPercentage / 100));
-            std::cout << "Total after discount: " << discountedCost << std::endl;
-        }
-        else {
-            std::cout << "Discount expired or invalid.\n";
-        }
-    }
-
-    bool validateDiscount() {
-        std::time_t now = std::time(nullptr);
-        isValidDiscount = (now <= expiryDate);
-        return isValidDiscount;
-    }
 };
 
 #endif

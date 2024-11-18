@@ -20,24 +20,6 @@ public:
         : Client(clientName, clientID, email, phone, address, paymentMethod, membershipType, totalSpent),
         Order(orderID, product, quantity, orderPaymentMethod, isPaid, deliveryAddress, orderStatus) {}
 
-    // 7) Деструктор множинного наслідування
-    ~ClientOrder() {
-        // Можна вказати код для звільнення ресурсів, якщо це необхідно
-        std::cout << "ClientOrder destructor called." << std::endl;
-    }
-
-    // Методи для отримання інформації про клієнта та замовлення
-    void displayClientOrderInfo() const {
-        std::cout << "Client Name: " << getName() << "\n"
-            << "Client ID: " << getClientID() << "\n"
-            << "Order ID: " << getOrderID() << "\n"
-            << "Product: " << getProduct().getName() << "\n"
-            << "Quantity: " << getQuantity() << "\n"
-            << "Total Price: " << getTotalPrice() << "\n"
-            << "Payment Method: " << Order::getPaymentMethod().getMethodName() << "\n"
-            << "Delivery Address: " << getDeliveryAddress() << "\n"
-            << "Order Status: " << getOrderStatus() << std::endl;
-    }
 };
 #endif
 

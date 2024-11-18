@@ -11,13 +11,6 @@ public:
         : Cart(cart), Order(order) {}
     ~CartOrder() {}
 
-    // Метод для відображення інформації про замовлення з кошика
-    void displayCartOrderInfo() const {
-        std::cout << "Cart Order Information:" << std::endl;
-        std::cout << "Order ID: " << getOrderID() << std::endl;
-        std::cout << "Items in Cart: " << getItemCount() << std::endl; // Get item count from Cart
-        std::cout << "Total Price: " << getTotalPrice() << std::endl;
-    }
 };
 
 #endif
